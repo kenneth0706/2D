@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2樓點名系統</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            color: #333;
+            text-align: center;
+        }
+        .date {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 750px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+        .room {
+            margin-bottom: 25px;
+        }
+        .room-title {
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 8px;
+            font-weight: bold;
+        }
+        .student-list label {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 1em;
+            color: #4d4d4d;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .student-list label:hover {
+            background-color: #f7f9fc;
+        }
+        input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+        }
+        .footer {
+            font-size: 1.1em;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f0f4f8;
+            border-radius: 8px;
+            text-align: center;
+            color: #333;
+            font-weight: 500;
+            border-top: 3px solid #3498db;
+        }
+        .footer div {
+            margin-bottom: 8px;
+        }
+        .footer span {
+            color: #3498db;
+            font-weight: bold;
+        }
+        .absent-list {
+            font-size: 1em;
+            color: #e74c3c;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .copyright {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .save-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+        .save-button:hover {
+            background-color: #2980b9;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            .student-list label {
+                font-size: 1em;
+            }
+            .footer {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>2樓點名系統</h1>
+<div class="date" id="today-date">今天日期：</div>
+
+<div class="container" id="attendance-system">
+
+    
+    <div class="room">
+        <div class="room-title">2樓D1 (4225)</div>
+        <div class="student-list">
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.黃煜展(1111234024)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 2.鄭聿翔(1111234041)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 3.姚善惟(1111251101)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 4.陳宥叡(1111132046)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 5.廖祐勝(1111132099)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 6.洪偉倫(1111251099)</label>
+        </div>
+    </div>
+
+   
+    <div class="room">
+        <div class="room-title">2樓D2 (4226)</div>
+        <div class="student-list">
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.陳諺鋐(1111234023)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 3.陳傑智(1111251050)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 4.辛祐鈞(1111104084)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 5.羅兆宸(1111202086) </label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 6.陳若禹(1411251112)</label>
+        </div>
+    </div>
+
+    
+    <div class="room">
+        <div class="room-title">2樓D3 (4227)</div>
+        <div class="student-list">
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.周楷倫(1111134037)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 2.洪崧程(1111202079)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 5.洪尚宏(3411307074)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 6.江龍泰(1111232088)</label>
+        </div>
+    </div>
+
+    
+    <div class="room">
+        <div class="room-title">2樓D4 (4228)</div>
+        <div class="student-list">
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.洪彥昇(1411333045)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 2.劉祐嘉(1311332046)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 3.金本立(1311332061)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 4.李榮麟(1311333028)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 5.鄭博升(1411307026)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 6.黃皓仁(1411101081)</label>
+        </div>
+    </div>
+
+   
+    <div class="room">
+        <div class="room-title">2樓D5 (4229)</div>
+        <div class="student-list">
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.王鈞翺(1411335013)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 2.吳仲恩(1411341034)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 3.吳政昕(1411332062)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 4.鍾琇艷(1411332016)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 5.鄭書恩(1411322042)</label>
+            <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 6.賴柏安(1411306038)</label>
+        </div>
+    </div>
+
+   
+   <div class="room">
+    <div class="room-title">2樓D6 (4230)</div>
+    <div class="student-list">
+        <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.潘陳志孝(1411232098)</label>
+        <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 2.瞿發勝(1411233048)</label>
+        <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 3.李宇悅(1111232020)</label>
+        <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 4.林紹禾(1111224046)</label>
+        <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 5.劉展宸(1411308035)</label>
+        <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 6.楊承偉(1411362063)</label>
+    </div>
+</div>
+
+    <button class="save-button" onclick="saveAttendance()">儲存</button>
+    
+    <div class="footer">
+        <div> 總人數: <span id="total-count">0</span>  | 實到: <span id="present-count">0</span> | 未到: <span id="absent-count">0</span> </span></div>
+        <div>缺席學生名單:</div>
+        <div id="absent-list" class="absent-list"></div>
+        
+    </div>
+
+</div>
+
+<div class="copyright">© 2024 振東國際版權所有</div>
+
+<script>
+    function updateAttendance() {
+        const students = document.querySelectorAll('.student');
+        const absentList = document.getElementById('absent-list');
+        const absentStudents = [];
+        let presentCount = 0;
+
+        students.forEach(student => {
+            if (!student.checked) {
+                absentStudents.push(student.parentElement.innerText);
+            } else {
+                presentCount++;
+            }
+        });
+
+        absentList.innerHTML = absentStudents.length > 0 ? absentStudents.join('<br>') : '無';
+        updateCounts(students.length, presentCount);
+    }
+
+    function updateCounts(total, present) {
+        const absent = total - present;
+        document.getElementById('total-count').innerText = total;
+        document.getElementById('present-count').innerText = present;
+        document.getElementById('absent-count').innerText = absent;
+    }
+
+    function saveAttendance() {
+        const students = document.querySelectorAll('.student');
+        const attendanceData = [];
+
+        students.forEach((student) => {
+            const studentName = student.parentElement.innerText;
+            attendanceData.push({
+                name: studentName,
+                present: student.checked
+            });
+        });
+
+        const json = JSON.stringify(attendanceData);
+        localStorage.setItem('attendanceData', json);  // 儲存到本地存儲
+        alert('點名資料已儲存！');
+        loadAttendance(); // 儲存後重新載入資料
+    }
+
+    function loadAttendance() {
+        const storedData = localStorage.getItem('attendanceData');
+        if (storedData) {
+            const attendanceData = JSON.parse(storedData);
+            attendanceData.forEach((data, index) => {
+                const checkbox = document.querySelectorAll('.student')[index];
+                if (checkbox) {
+                    checkbox.checked = data.present;
+                }
+            });
+        }
+        updateAttendance(); // 更新出缺席名單和統計
+    }
+
+    // 設定今天的日期
+    function setTodayDate() {
+        const date = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('today-date').innerText += ' ' + date.toLocaleDateString('zh-TW', options);
+    }
+
+    window.onload = function() {
+        setTodayDate();
+        loadAttendance(); // 載入儲存的出席資料
+    };
+</script>
+</body>
+</html>

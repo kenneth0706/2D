@@ -5,163 +5,216 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2樓點名系統</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #eef2f7;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            color: #333;
-        }
-         .password-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        .password-screen input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-        .password-screen button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-        .password-screen button:hover {
-            background-color: #2980b9;
-        }
-        #main-content {
-            display: none; /* 初始隱藏主內容 */
-        }
-        h1 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
-            color: #333;
-            text-align: center;
-        }
-        .date {
-            text-align: center;
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 20px;
-        }
-        .container {
-            width: 100%;
-            max-width: 750px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            padding: 25px;
-            margin-bottom: 15px;
-        }
-        .room {
-            margin-bottom: 25px;
-        }
-        .room-title {
-            font-size: 1.4em;
-            margin-bottom: 12px;
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 8px;
-            font-weight: bold;
-        }
-        .student-list label {
-            display: flex;
-            align-items: center;
-            padding: 10px 0;
-            font-size: 1em;
-            color: #4d4d4d;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .student-list label:hover {
-            background-color: #f7f9fc;
-        }
-        input[type="checkbox"] {
-            margin-right: 12px;
-            transform: scale(1.3);
-        }
-        .footer {
-            font-size: 1.1em;
-            margin-top: 20px;
-            padding: 20px;
-            background: #f0f4f8;
-            border-radius: 8px;
-            text-align: center;
-            color: #333;
-            font-weight: 500;
-            border-top: 3px solid #3498db;
-        }
-        .footer div {
-            margin-bottom: 8px;
-        }
-        .footer span {
-            color: #3498db;
-            font-weight: bold;
-        }
-        .absent-list {
-            font-size: 1em;
-            color: #e74c3c;
-            margin-top: 10px;
-            text-align: left;
-        }
-        .copyright {
-            font-size: 0.9em;
-            color: #666;
-            text-align: center;
-            margin-top: 10px;
-        }
-        .save-button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-top: 20px;
-        }
-        .save-button:hover {
-            background-color: #2980b9;
-        }
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
-            }
-            .container {
-                width: 90%;
-                padding: 20px;
-            }
-            .student-list label {
-                font-size: 1em;
-            }
-            .footer {
-                font-size: 1em;
-            }
-        }
+  /* 整體的排版和設置 */
+/* 整體的排版和設置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+/* 密碼框的樣式 */
+.password-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.password-screen input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.password-screen input[type="password"]:focus {
+    border-color: #3498db;
+}
+
+.password-screen button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.password-screen button:hover {
+    background-color: #2980b9;
+}
+
+/* 主內容區域 */
+#main-content {
+    display: none;
+}
+
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.date {
+    text-align: center;
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* 調整容器寬度，讓主業名單框更寬 */
+.container {
+    width: 100%;
+    max-width: 900px;  /* 調整寬度使框變寬 */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);  /* 滑鼠懸停時增強陰影效果 */
+}
+
+.room {
+    margin-bottom: 25px;
+}
+
+.room-title {
+    font-size: 1.4em;
+    margin-bottom: 12px;
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 8px;
+    font-weight: bold;
+}
+
+.student-list label {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 1em;
+    color: #4d4d4d;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;  /* 加入按鈕縮放效果 */
+}
+
+.student-list label:hover {
+    background-color: #f7f9fc;
+    transform: scale(1.02);  /* 滑鼠懸停時微縮放 */
+}
+
+input[type="checkbox"] {
+    margin-right: 12px;
+    transform: scale(1.3);
+}
+
+/* 新增底部區域樣式 */
+.footer {
+    font-size: 1.1em;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f0f4f8;
+    border-radius: 8px;
+    text-align: center;
+    color: #333;
+    font-weight: 500;
+    border-top: 3px solid #3498db;
+}
+
+.footer div {
+    margin-bottom: 8px;
+}
+
+.footer span {
+    color: #3498db;
+    font-weight: bold;
+}
+
+.absent-list {
+    font-size: 1em;
+    color: #e74c3c;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.copyright {
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.save-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #2980b9;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    body {
+        padding: 20px; /* 保留邊距，避免內容直接貼邊 */
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .container {
+        width: 100%;
+        padding: 20px;
+        margin-left: 10px;
+        margin-right: 10px; /* 讓手機版的內容區有點邊距 */
+    }
+
+    .student-list label {
+        font-size: 1em;
+    }
+
+    .footer {
+        font-size: 1em;
+    }
+}
+
+
     </style>
 </head>
 <body>
@@ -171,16 +224,18 @@
     <input type="password" id="password-input" placeholder="輸入密碼">
     <button onclick="verifyPassword()">確認</button>
 </div>
-    <div id="main-content">
+
+<div id="main-content">
 <h1>2樓點名系統</h1>
 <div class="date" id="today-date">今天日期：</div>
 
 <div class="container" id="attendance-system">
 
-    
     <div class="room">
-        <div class="room-title">2樓D1 (4225)</div>
-        <div class="student-list">
+        <div class="room-title">
+            <input type="checkbox" id="select-all-d1" onclick="toggleRoomSelection('d1')"checked>  2樓D1 (4225)
+        </div>
+        <div class="student-list" id="d1">
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.黃煜展(1111234024)</label>
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 2.鄭聿翔(1111234041)</label>
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 3.姚善惟(1111251101)</label>
@@ -190,10 +245,11 @@
         </div>
     </div>
 
-   
     <div class="room">
-        <div class="room-title">2樓D2 (4226)</div>
-        <div class="student-list">
+        <div class="room-title">
+            <input type="checkbox" id="select-all-d2" onclick="toggleRoomSelection('d2')"checked>  2樓D2 (4226)
+        </div>
+        <div class="student-list" id="d2">
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.陳諺鋐(1111234023)</label>
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 3.陳傑智(1111251050)</label>
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 4.辛祐鈞(1111104084)</label>
@@ -204,8 +260,10 @@
 
     
     <div class="room">
-        <div class="room-title">2樓D3 (4227)</div>
-        <div class="student-list">
+        <div class="room-title">
+            <input type="checkbox" id="select-all-d3" onclick="toggleRoomSelection('d3')"checked>  2樓D3 (4227)
+        </div>
+        <div class="student-list" id="d3">
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.周楷倫(1111134037)</label>
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 2.洪崧程(1111202079)</label>
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 6.江龍泰(1111232088)</label>
@@ -214,8 +272,10 @@
 
     
     <div class="room">
-        <div class="room-title">2樓D4 (4228)</div>
-        <div class="student-list">
+        <div class="room-title">
+            <input type="checkbox" id="select-all-d4" onclick="toggleRoomSelection('d4')"checked>  2樓D4 (4228)
+        </div>
+        <div class="student-list" id="d4">
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.洪彥昇(1411333045)</label>
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 2.劉祐嘉(1311332046)</label>
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 3.金本立(1311332061)</label>
@@ -227,8 +287,10 @@
 
    
     <div class="room">
-        <div class="room-title">2樓D5 (4229)</div>
-        <div class="student-list">
+        <div class="room-title">
+            <input type="checkbox" id="select-all-d5" onclick="toggleRoomSelection('d5')"checked>  2樓D5 (4229)
+        </div>
+        <div class="student-list" id="d5">
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.王鈞翺(1411335013)</label>
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 2.吳仲恩(1411341034)</label>
             <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 3.吳政昕(1411332062)</label>
@@ -240,8 +302,10 @@
 
    
    <div class="room">
-    <div class="room-title">2樓D6 (4230)</div>
-    <div class="student-list">
+    <div class="room-title">
+        <input type="checkbox" id="select-all-d6" onclick="toggleRoomSelection('d6')"checked>  2樓D6 (4230)
+    </div>
+    <div class="student-list" id="d6">
         <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 1.潘陳志孝(1411232098)</label>
         <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 2.瞿發勝(1411233048)</label>
         <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 3.李宇悅(1111232020)</label>
@@ -250,6 +314,7 @@
         <label><input type="checkbox" class="student" onchange="updateAttendance()" checked> 6.楊承偉(1411362063)</label>
     </div>
 </div>
+
 
     <button class="save-button" onclick="saveAttendance()">儲存</button>
     
@@ -265,7 +330,7 @@
 <div class="copyright">© 2024 振東國際版權所有</div>
 
 <script>
-      function verifyPassword() {
+    function verifyPassword() {
         const inputPassword = document.getElementById('password-input').value;
         const correctPassword = "950706";
         if (inputPassword === correctPassword) {
@@ -336,10 +401,23 @@
 
     // 設定今天的日期
     function setTodayDate() {
-        const date = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('today-date').innerText += ' ' + date.toLocaleDateString('zh-TW', options);
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('zh-TW', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        document.getElementById('today-date').innerText = '今天日期：' + formattedDate;
     }
+    function toggleRoomSelection(roomId) {
+        const room = document.getElementById(roomId);
+        const isChecked = document.getElementById('select-all-' + roomId).checked;
+        const students = room.querySelectorAll('.student');
+        students.forEach(student => student.checked = isChecked);
+        updateAttendance();
+    }
+
+
 
     window.onload = function() {
         setTodayDate();
